@@ -14,7 +14,7 @@ module.exports = function (gulp, plugins, vars) {
 		.pipe(plugins.jshint.reporter('default'))
 		.pipe(plugins.concat(vars.appName + '.min.js'))
 		.pipe(gulp.dest('dist/js'))
-		//.pipe(plugins.uglify())
+		.pipe(plugins.uglify())
 		.pipe(plugins.sourcemaps.write('./'))
 		.pipe(gulp.dest('dist/js'))
 	};
