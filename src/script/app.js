@@ -5,7 +5,7 @@ define([], function () {
 		'oc.lazyLoad'
 	]);
 
-	app.config( function ($ocLazyLoadProvider, $stateProvider, $urlRouterProvider) {
+	app.config( function ($ocLazyLoadProvider, $stateProvider, $urlRouterProvider, $locationProvider) {
 
 		$ocLazyLoadProvider.config({
 			loadedModules: ['mainModule'],
@@ -19,6 +19,8 @@ define([], function () {
 			url: '/',
 			templateUrl: 'main.html'
 		});
+
+		$locationProvider.html5Mode(true);
 
 	});
 
