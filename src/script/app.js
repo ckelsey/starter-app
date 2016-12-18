@@ -17,7 +17,17 @@ define([], function () {
 		$stateProvider
 		.state('home', {
 			url: '/',
-			templateUrl: 'main.html'
+			templateUrl: 'main.html',
+			// resolve: {
+			// 	load: function($ocLazyLoad) {
+			//
+			// 		return $ocLazyLoad.load ({
+			// 			name: 'module1',
+			// 			files: ['module1/module.js']
+			//
+			// 		});
+			// 	}
+			// }
 		});
 
 		$locationProvider.html5Mode(true);
