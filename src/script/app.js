@@ -18,18 +18,34 @@ define([], function () {
 		.state('home', {
 			url: '/',
 			templateUrl: 'main.html',
-			// resolve: {
-			// 	load: function($ocLazyLoad) {
-			//
-			// 		return $ocLazyLoad.load ({
-			// 			name: 'elements',
-			// 			files: [
-			// 				'dist/js/components/elements/app-elements.js'
-			// 			]
-			// 		});
-			// 	}
-			// }
-		});
+			resolve: {
+				load: function($ocLazyLoad) {
+
+					return $ocLazyLoad.load ({
+						name: 'anotherModule',
+						files: [
+							'dist/components/main/controller.js'
+						]
+					});
+				}
+			}
+		})
+		.state('docs', {
+			url: '/docs',
+			templateUrl: 'docs.html',
+			resolve: {
+				load: function($ocLazyLoad) {
+
+					return $ocLazyLoad.load ({
+						name: 'docsModule',
+						files: [
+							'dist/components/docs/docs-controller.js'
+						]
+					});
+				}
+			}
+		})
+		;
 
 		$locationProvider.html5Mode(true);
 

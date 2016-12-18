@@ -42,7 +42,7 @@ var vars = {
 
 	html: ['*.html', 'src/**/**.html'],
 
-	scripts: ['src/**/**.js'],
+	scripts: ['src/script/*.js'],
 
 	scriptsVendor:[
 		'bower_components/angular/angular.min.js',
@@ -62,7 +62,7 @@ var vars = {
 	],
 
 	scriptsComponentsJs:[
-		'src/components/**/*.js'
+		'src/components/**/**.js'
 	],
 
 	scriptsComponentsWatch:[

@@ -19,7 +19,7 @@ module.exports = function (gulp, plugins, vars) {
 			.pipe(plugins.concat(path))
 			.pipe(plugins.uglify())
 			.pipe(plugins.sourcemaps.write('./'))
-			.pipe(gulp.dest('dist/js'));
+			.pipe(gulp.dest('dist'));
 		}));
 	};
 };
