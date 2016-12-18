@@ -22,9 +22,10 @@ define([], function () {
 			// 	load: function($ocLazyLoad) {
 			//
 			// 		return $ocLazyLoad.load ({
-			// 			name: 'module1',
-			// 			files: ['module1/module.js']
-			//
+			// 			name: 'elements',
+			// 			files: [
+			// 				'dist/js/components/elements/app-elements.js'
+			// 			]
 			// 		});
 			// 	}
 			// }

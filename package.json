@@ -29,7 +29,7 @@
 		"q": "^*",
 		"run-sequence": "^*",
 		"gulp-load-plugins": "^*",
-		"gulp-shell": "^*"
+		"gulp-flatmap": "^*"
 	},
 	"devDependencies": {},
 	"scripts": {

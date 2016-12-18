@@ -61,6 +61,14 @@ var vars = {
 		'bower_components/angular-ui-router/release/angular-ui-router.min.js'
 	],
 
+	scriptsComponentsJs:[
+		'src/components/**/*.js'
+	],
+
+	scriptsComponentsWatch:[
+		'src/components/**/*.*'
+	],
+
 	moveFonts: ['bower_components/font-awesome/fonts/*.*'],
 
 	moveToLib: [],
@@ -107,6 +115,7 @@ gulp.task('package', function(){
 	vars.pkg = require('./package.json');
 });
 gulp.task('scripts_vendor', require('./tasks/scripts_vendor')(gulp, plugins, vars));
+gulp.task('scripts_components', require('./tasks/scripts_components')(gulp, plugins, vars));
 gulp.task('scripts', require('./tasks/scripts')(gulp, plugins, vars));
 gulp.task('styles_vendor', require('./tasks/styles_vendor')(gulp, plugins, vars));
 gulp.task('styles', require('./tasks/styles')(gulp, plugins, vars));
@@ -135,6 +144,7 @@ gulp.task('live', function() {
 	gulp.watch(vars.stylesVender, ['styles_vendor']);
 	gulp.watch(vars.moveFonts, ['move_fonts']);
 	gulp.watch(vars.scriptsVendor, ['scripts_vendor']);
+	gulp.watch(vars.scriptsComponentsWatch, ['scripts_components']);
 	gulp.watch(vars.scripts, ['scripts']);
 	gulp.watch(vars.html, ['scripts']);
 	gulp.watch(vars.moveToLib, ['move_to_lib']);
@@ -149,6 +159,7 @@ gulp.task('default', [
 	'styles',
 	'styles_vendor',
 	'scripts_vendor',
+	'scripts_components',
 	'scripts',
 	'browser-sync',
 	'live'
