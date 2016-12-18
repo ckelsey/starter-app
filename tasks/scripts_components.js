@@ -1,7 +1,7 @@
 module.exports = function (gulp, plugins, vars) {
 	return function () {
 
-		gulp.src(vars.scriptsComponentsJs)
+		gulp.src(vars.scriptsComponents)
 		.pipe(plugins.plumber(vars.plumberErrorHandler))
 		.pipe(plugins.flatmap(function(stream, file){
 			var path = file.path.split('/src/')[1];

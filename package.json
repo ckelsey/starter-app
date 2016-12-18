@@ -29,7 +29,8 @@
 		"q": "^*",
 		"run-sequence": "^*",
 		"gulp-load-plugins": "^*",
-		"gulp-flatmap": "^*"
+		"gulp-flatmap": "^*",
+		"gulp-sass": "^*"
 	},
 	"devDependencies": {},
 	"scripts": {

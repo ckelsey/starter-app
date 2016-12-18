@@ -31,6 +31,9 @@ var vars = {
 
 	appName: appName,
 
+
+
+
 	styles: ['src/style/*.scss'],
 
 	stylesVendor: [
@@ -40,7 +43,14 @@ var vars = {
 		'bower_components/ackolor/dist/css/aCKolor.min.css'
 	],
 
-	html: ['*.html', 'src/**/**.html'],
+	stylesComponents:[
+		'src/components/**/*.scss'
+	],
+
+
+
+
+
 
 	scripts: ['src/script/*.js'],
 
@@ -61,13 +71,18 @@ var vars = {
 		'bower_components/angular-ui-router/release/angular-ui-router.min.js'
 	],
 
-	scriptsComponentsJs:[
+	scriptsComponents:[
 		'src/components/**/**.js'
 	],
 
-	scriptsComponentsWatch:[
+	componentsWatch:[
 		'src/components/**/*.*'
 	],
+
+
+
+
+	html: ['*.html', 'src/**/**.html'],
 
 	moveFonts: ['bower_components/font-awesome/fonts/*.*'],
 
@@ -118,6 +133,7 @@ gulp.task('scripts_vendor', require('./tasks/scripts_vendor')(gulp, plugins, var
 gulp.task('scripts_components', require('./tasks/scripts_components')(gulp, plugins, vars));
 gulp.task('scripts', require('./tasks/scripts')(gulp, plugins, vars));
 gulp.task('styles_vendor', require('./tasks/styles_vendor')(gulp, plugins, vars));
+gulp.task('styles_components', require('./tasks/styles_components')(gulp, plugins, vars));
 gulp.task('styles', require('./tasks/styles')(gulp, plugins, vars));
 gulp.task('aws_publish', require('./tasks/aws_publish')(gulp, plugins, vars));
 
@@ -144,7 +160,7 @@ gulp.task('live', function() {
 	gulp.watch(vars.stylesVender, ['styles_vendor']);
 	gulp.watch(vars.moveFonts, ['move_fonts']);
 	gulp.watch(vars.scriptsVendor, ['scripts_vendor']);
-	gulp.watch(vars.scriptsComponentsWatch, ['scripts_components']);
+	gulp.watch(vars.componentsWatch, ['scripts_components', 'styles_components']);
 	gulp.watch(vars.scripts, ['scripts']);
 	gulp.watch(vars.html, ['scripts']);
 	gulp.watch(vars.moveToLib, ['move_to_lib']);
@@ -158,6 +174,7 @@ gulp.task('default', [
 	'move_fonts',
 	'styles',
 	'styles_vendor',
+	'styles_components',
 	'scripts_vendor',
 	'scripts_components',
 	'scripts',
