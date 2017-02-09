@@ -12,7 +12,7 @@ module.exports = function (gulp, plugins, vars) {
 		.pipe(plugins.angularEmbedTemplates())
 		.pipe(plugins.jshint())
 		.pipe(plugins.jshint.reporter('default'))
-		.pipe(plugins.concat(vars.appName + '_demo.min.js'))
+		.pipe(plugins.concat(vars.appName + '.min.js'))
 		.pipe(gulp.dest('dist/js'))
 		.pipe(plugins.uglify())
 		.pipe(plugins.sourcemaps.write('./'))
