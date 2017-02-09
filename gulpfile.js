@@ -34,25 +34,16 @@ var vars = {
 
 
 
-	styles: ['src/style/*.scss'],
+	styles: ['src/style/*.scss', 'src/components/**/*.scss'],
 
-	stylesVendor: [
-		'bower_components/fontawesome/css/font-awesome.min.css',
-		'bower_components/do-ck/dist/css/do-ck.min.css',
-		'bower_components/ckronos/dist/css/ckronos.min.css',
-		'bower_components/ackolor/dist/css/aCKolor.min.css'
-	],
-
-	stylesComponents:[
-		'src/components/**/*.scss'
-	],
+	stylesVendor: [],
 
 
 
 
 
 
-	scripts: ['src/script/*.js'],
+	scripts: ['src/main/*.js', 'src/components/**/**.js'],
 
 	scriptsVendor:[
 		'bower_components/angular/angular.min.js',
@@ -66,48 +57,20 @@ var vars = {
 		'bower_components/ngstorage/ngStorage.min.js',
 		'bower_components/ackolor/dist/js/aCKolor.min.js',
 		'bower_components/ckronos/dist/js/ckronos.min.js',
-		'bower_components/do-ck/dist/js/do-ck.min.js',
-		'bower_components/oclazyload/dist/ocLazyLoad.min.js',
-		'bower_components/angular-ui-router/release/angular-ui-router.min.js'
-	],
-
-	scriptsComponents:[
-		'src/components/**/**.js'
-	],
-
-	componentsWatch:[
-		'src/components/**/*.*'
 	],
 
 
 
 
-	html: ['*.html', 'src/**/**.html'],
-
-	moveFonts: ['bower_components/font-awesome/fonts/*.*'],
-
-	moveToLib: [],
-
-	moveToJs: [
-		'bower_components/angular/angular.min.js.map',
-		'bower_components/requirejs/require.js',
-		'main.js',
-		'bower_components/do-ck/dist/js/do-ck.min.js.map'
-	],
+	html: ['*.html', 'src/main/**.html', 'src/components/**/**.html'],
 
 	buildFiles: [
-		'lib/bower_components/font-awesome/css/font-awesome.min.css',
-		'lib/bower_components/font-awesome/css/font-awesome.css.map',
-		'lib/bower_components/font-awesome/fonts/*.*',
 		'dist/css/'+ appName +'_vendor.min.css',
 		'dist/css/'+ appName +'.min.css',
 		'dist/js/'+ appName +'_vendor.min.js',
 		'dist/js/'+ appName +'.min.js',
 		'dist/js/'+ appName +'.min.js.map',
-		'dist/js/utility.min.js.map',
 		'favicon.png',
-		'app.js',
-		'demo.html',
 		'index.html'
 	]
 };
@@ -117,8 +80,6 @@ var vars = {
 gulp.task('bower', require('./tasks/bower')(gulp, plugins, vars));
 gulp.task('browser-sync', require('./tasks/browsersync')(gulp, plugins, vars));
 gulp.task('index', require('./tasks/index')(gulp, plugins, vars));
-gulp.task('move_fonts', require('./tasks/move_fonts')(gulp, plugins, vars));
-gulp.task('move_to_js', require('./tasks/move_to_js')(gulp, plugins, vars));
 gulp.task('move_to_build', require('./tasks/move_to_build')(gulp, plugins, vars));
 gulp.task('move_to_lib', require('./tasks/move_to_lib')(gulp, plugins, vars));
 gulp.task('package', function(){
@@ -130,12 +91,10 @@ gulp.task('package', function(){
 	vars.pkg = require('./package.json');
 });
 gulp.task('scripts_vendor', require('./tasks/scripts_vendor')(gulp, plugins, vars));
-gulp.task('scripts_components', require('./tasks/scripts_components')(gulp, plugins, vars));
 gulp.task('scripts', require('./tasks/scripts')(gulp, plugins, vars));
 gulp.task('styles_vendor', require('./tasks/styles_vendor')(gulp, plugins, vars));
-gulp.task('styles_components', require('./tasks/styles_components')(gulp, plugins, vars));
 gulp.task('styles', require('./tasks/styles')(gulp, plugins, vars));
-gulp.task('aws_publish', require('./tasks/aws_publish')(gulp, plugins, vars));
+// gulp.task('aws_publish', require('./tasks/aws_publish')(gulp, plugins, vars));
 
 
 
@@ -158,25 +117,16 @@ gulp.task('live', function() {
 	plugins.livereload.listen();
 	gulp.watch(vars.styles, ['styles']);
 	gulp.watch(vars.stylesVender, ['styles_vendor']);
-	gulp.watch(vars.moveFonts, ['move_fonts']);
 	gulp.watch(vars.scriptsVendor, ['scripts_vendor']);
-	gulp.watch(vars.componentsWatch, ['scripts_components', 'styles_components']);
 	gulp.watch(vars.scripts, ['scripts']);
 	gulp.watch(vars.html, ['scripts']);
-	gulp.watch(vars.moveToLib, ['move_to_lib']);
-	gulp.watch(vars.moveToJs, ['move_to_js']);
 	gulp.watch("dist/**").on('change', vars.browserSync.reload);
 });
 
 gulp.task('default', [
-	'move_to_lib',
-	'move_to_js',
-	'move_fonts',
 	'styles',
 	'styles_vendor',
-	'styles_components',
 	'scripts_vendor',
-	'scripts_components',
 	'scripts',
 	'browser-sync',
 	'live'

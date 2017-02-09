@@ -49,8 +49,6 @@
 		"ackolor": "latest",
 		"ngstorage": "latest",
 		"ckronos": "latest",
-		"oclazyload": "latest",
-		"angular-ui-router": "latest",
-		"requirejs": "latest"
+		"ickons": "latest"
 	}
 }

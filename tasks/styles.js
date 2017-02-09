@@ -10,7 +10,7 @@ module.exports = function (gulp, plugins, vars) {
 			image: 'app/css/images'
 		}))
 		.pipe(plugins.autoprefixer('last 2 version', 'Safari', 'ie', 'opera', 'ios', 'android', 'chrome', 'firefox'))
-		.pipe(plugins.concat(vars.appName + '.css'))
+		.pipe(plugins.concat(vars.appName + '_demo.css'))
 		.pipe(plugins.rename({
 			suffix: '.min'
 		}))

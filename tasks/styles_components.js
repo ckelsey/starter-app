@@ -3,15 +3,18 @@ module.exports = function (gulp, plugins, vars) {
 
 		gulp.src(vars.stylesComponents)
 		.pipe(plugins.plumber(vars.plumberErrorHandler))
-		.pipe(plugins.flatmap(function(stream, file){
-			var path = file.path.split('/src/')[1].split('/');
-			path.pop();
-			path.pop();
-			path = path.join('/');
-
-			return stream
-			.pipe(plugins.sass().on('error', plugins.sass.logError))
-			.pipe(gulp.dest('dist/'+path));
-		}));
+		.pipe(gulp.dest('dist/css/build/sass'))
+		.pipe(plugins.compass({
+			css: 'dist/css/build/css',
+			sass: 'dist/css/build/sass',
+			image: 'app/css/images'
+		}))
+		.pipe(plugins.autoprefixer('last 2 version', 'Safari', 'ie', 'opera', 'ios', 'android', 'chrome', 'firefox'))
+		.pipe(plugins.concat(vars.appName + '.css'))
+		.pipe(plugins.rename({
+			suffix: '.min'
+		}))
+		.pipe(plugins.cleanCss())
+		.pipe(gulp.dest('dist/css'));
 	};
 };

@@ -5,7 +5,7 @@ module.exports = function (gulp, plugins, vars) {
 		var fs = require('fs');
 
 		var html = '<!doctype html>' + "\r" +
-		'<html>' + "\r" +
+		'<html ng-app="app">' + "\r" +
 		'<head>' + "\r" +
 		"\t" + '<meta charset="utf-8">' + "\r" +
 		"\t" + '<meta http-equiv="X-UA-Compatible" content="IE=edge">' + "\r" +
@@ -13,13 +13,15 @@ module.exports = function (gulp, plugins, vars) {
 		"\t" + '<meta name="viewport" content="width=device-width">' + "\r" +
 		"\t" + '<link rel="icon" type="image/png" href="./favicon.png">' + "\r" +
 		"\t" + '<link rel="stylesheet" href="/dist/css/' + vars.appName + '_vendor.min.css">' + "\r" +
+		"\t" + '<link rel="stylesheet" href="/dist/css/' + vars.appName + '_demo.min.css">' + "\r" +
 		"\t" + '<link rel="stylesheet" href="/dist/css/' + vars.appName + '.min.css">' + "\r" +
 		"\t" + '<script src="/dist/js/' + vars.appName + '_vendor.min.js"></script>' + "\r" +
-		"\t" + '<script data-main="main" src="/dist/js/require.js"></script>' + "\r" +
+		"\t" + '<script src="/dist/js/' + vars.appName + '_demo.min.js"></script>' + "\r" +
+		"\t" + '<script src="/dist/js/' + vars.appName + '.min.js"></script>' + "\r" +
 		"\t" + '<base href="/" />' + "\r" +
 		'</head>' + "\r" +
-		'<body>' + "\r" +
-		"\t" + '<div ui-view></div>' + "\r" +
+		'<body ng-controller="AppCtlr as app">' + "\r" +
+		"\t" + '<div ng-view></div>' + "\r" +
 		'</body>' + "\r" +
 		'</html>';
 
