@@ -80,8 +80,7 @@ var vars = {
 gulp.task('bower', require('./tasks/bower')(gulp, plugins, vars));
 gulp.task('browser-sync', require('./tasks/browsersync')(gulp, plugins, vars));
 gulp.task('index', require('./tasks/index')(gulp, plugins, vars));
-gulp.task('move_to_build', require('./tasks/move_to_build')(gulp, plugins, vars));
-gulp.task('move_to_lib', require('./tasks/move_to_lib')(gulp, plugins, vars));
+// gulp.task('move_to_build', require('./tasks/move_to_build')(gulp, plugins, vars));
 gulp.task('package', function(){
 	var path = require('path');
 	var fs = require('fs');
